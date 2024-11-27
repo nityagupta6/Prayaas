@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9d609755.css",
+    "main.js": "/static/js/main.5ef2ae65.js",
+    "static/media/success.jpg": "/static/media/success.0fd74cf42a2d1105d08f.jpg",
+    "static/media/donate.jpg": "/static/media/donate.5404d8759ee3d9764eb1.jpg",
+    "static/media/logo.png": "/static/media/logo.721100f8b696bfb9db3c.png",
+    "static/media/home.png": "/static/media/home.d6bbbca6620bf21b4ede.png",
+    "static/media/about.jpg": "/static/media/about.0321da49ed2dd00d0aae.jpg",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/loading.png": "/static/media/loading.353998fdd0aff9971fa3.png",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/index.html",
+    "main.9d609755.css.map": "/static/css/main.9d609755.css.map",
+    "main.5ef2ae65.js.map": "/static/js/main.5ef2ae65.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d609755.css",
+    "static/js/main.5ef2ae65.js"
+  ]
+}
