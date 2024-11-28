@@ -1,13 +1,15 @@
 /* eslint-disable */
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import logo from "../img/logo.png";
 
-export default function Navbar({user}) {
+export default function Navbar({ user, setUser }) {
   // console.log(user)
   const [navbarOpen, setNavbarOpen] = useState(false);
-
   const ref = useRef();
+  const navigate = useNavigate();
+  const [_, __, removeCookie] = useCookies(["AuthToken", "UserId"]);
 
   useEffect(() => {
     const clickedOutside = (e) => {
@@ -30,6 +32,13 @@ export default function Navbar({user}) {
     element && element.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
+  const handleLogout = () => {
+    removeCookie("AuthToken");
+    removeCookie("UserId");
+    navigate("/");
+    window.location.reload();
+  };
+
   return (
     <div className="fixed w-full top-0 z-20" ref={ref}>
       <nav
@@ -40,7 +49,7 @@ export default function Navbar({user}) {
             <a
               className="text-2xl font-bold leading-relaxed mr-4 my-2 whitespace-nowrap text-[#636363] flex flex-row"
               href="/"
-              onClick={(e) =>{
+              onClick={(e) => {
                 setNavbarOpen(!navbarOpen)
                 let about = document.getElementById("home");
                 e.preventDefault();
@@ -77,7 +86,7 @@ export default function Navbar({user}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   href="/"
-                  onClick={(e) =>{
+                  onClick={(e) => {
                     setNavbarOpen(!navbarOpen)
                     let about = document.getElementById("about");
                     e.preventDefault();
@@ -94,7 +103,7 @@ export default function Navbar({user}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/"
-                  onClick={(e) =>{
+                  onClick={(e) => {
                     setNavbarOpen(!navbarOpen)
                     let about = document.getElementById("events");
                     e.preventDefault();
@@ -111,7 +120,7 @@ export default function Navbar({user}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/stories"
-                  onClick={(e) =>{
+                  onClick={(e) => {
                     setNavbarOpen(!navbarOpen)
                     let about = document.getElementById("stories");
                     e.preventDefault();
@@ -128,7 +137,7 @@ export default function Navbar({user}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/testimonials"
-                  onClick={(e) =>{
+                  onClick={(e) => {
                     setNavbarOpen(!navbarOpen)
                     let about = document.getElementById("testimonials");
                     e.preventDefault();
@@ -145,7 +154,7 @@ export default function Navbar({user}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/faqs"
-                  onClick={(e) =>{
+                  onClick={(e) => {
                     setNavbarOpen(!navbarOpen)
                     let about = document.getElementById("faqs");
                     e.preventDefault();
@@ -179,7 +188,7 @@ export default function Navbar({user}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/team"
-                  onClick={(e) =>{
+                  onClick={(e) => {
                     setNavbarOpen(!navbarOpen)
                   }}
                 >
@@ -197,17 +206,41 @@ export default function Navbar({user}) {
                   Donate Us
                 </Link>
               </li> */}
-              {!user && <li className="nav-item">
+              {/* {!user && <li className="nav-item">
                 <Link
                   className={
-                "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:text-[#306F5E] lg:border-2 lg:border-[#306F5E] "
+                    "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:text-[#306F5E] lg:border-2 lg:border-[#306F5E] "
                   }
                   to="/login"
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
                   Login
                 </Link>
-              </li>}
+              </li>} */}
+              {!user ? (
+                <li className="nav-item">
+                  <Link
+                    className={
+                      "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:text-[#306F5E] lg:border-2 lg:border-[#306F5E] "
+                    }
+                    to="/login"
+                    onClick={() => setNavbarOpen(!navbarOpen)}
+                  >
+                    Login
+                  </Link>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <button
+                    className={
+                      "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:text-[#306F5E] lg:border-2 lg:border-[#306F5E]"
+                    }
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
         </div>
