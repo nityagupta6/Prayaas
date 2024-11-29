@@ -13,7 +13,10 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-
+  is_admin: {
+    type: Boolean,
+    default: false,
+  },
   profile_completed: {
     type: Boolean,
     default: false,

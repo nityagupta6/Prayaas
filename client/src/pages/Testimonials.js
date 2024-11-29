@@ -26,7 +26,7 @@ export default function Testimonials({ user }) {
   // }
 
   const handleClick = () => {
-    if (user?.is_alumni) navigate("/createtestimonial");
+    if (user?.is_alumni || user?.is_admin) navigate("/createtestimonial");
     else navigate("/");
   };
   // console.log(testimonials);
@@ -56,7 +56,7 @@ export default function Testimonials({ user }) {
           </div>
         )}
 
-        {user?.is_alumni && (
+        {(user?.is_alumni || user?.is_admin) && (
           <div className="flex justify-center mt-12">
             <button
               className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#F7D770] text-[#636363]"

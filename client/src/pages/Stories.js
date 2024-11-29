@@ -26,7 +26,7 @@ export default function Stories({ user }) {
   // }
 
   const handleClick = () => {
-    if (user?.is_member) navigate("/createstory");
+    if (user?.is_member || user?.is_admin) navigate("/createstory");
     else navigate("/");
   };
 
@@ -47,7 +47,7 @@ export default function Stories({ user }) {
           </div>
         )}
 
-        {user?.is_member && (
+        {(user?.is_member || user?.is_admin) && (
           <div className="flex justify-center mt-12">
             <button
               className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#F7D770] text-[#636363]"

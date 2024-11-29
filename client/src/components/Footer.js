@@ -44,7 +44,7 @@ export default function Footer() {
       </div>
       <div className="bg-[#306F5E] flex flex-row pt-2 pb-2 justify-center">
         <p className="text-xs md:text-sm text-white text-center">
-          Made with ❤️ by IIITA
+          © 2024 nitya24gupta@gmail.com
         </p>
       </div>
     </section>

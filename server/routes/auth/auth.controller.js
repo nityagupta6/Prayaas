@@ -22,7 +22,7 @@ async function login(req, res) {
     if (correctPassword) {
       const token = jwt.sign(
         { user_id: existingUser.user_id },
-        process.env.JWT_KEY,
+        "thisisprobablythebestjwtkeyihaveeverseen",
         { expiresIn: "1d" }
       );
       res.status(200).json({ token, userId: existingUser.user_id });
@@ -40,12 +40,17 @@ async function signup(req, res) {
   const { type } = req.body;
   let is_alumni = false;
   let is_member = false;
+  let is_admin = false;
   if (type == "alumni") {
     is_alumni = true;
   }
   if (type == "member") {
     is_member = true;
   }
+  if (type == "admin") {
+    is_admin = true;
+  }
+
   if (!email || !password) {
     // console.log("here");
     res.status(409).send("Missing email or password");
@@ -67,8 +72,9 @@ async function signup(req, res) {
       password: hashed_password,
       is_alumni: is_alumni,
       is_member: is_member,
+      is_admin: is_admin
     });
-
+    console.log("User:", newUser);
     const insertedUser = await newUser.save();
 
     const token = jwt.sign(

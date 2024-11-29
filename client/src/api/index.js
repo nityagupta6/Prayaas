@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = axios.create({ baseURL: "https://prayaas.onrender.com/v1" });
+const API = axios.create({ baseURL: "http://localhost:8000/v1" });
 export const api = {
   login: (data) => API.post("/auth/login", data),
   signup: (data) => API.post("/auth/signup", data),

@@ -25,6 +25,8 @@ import PaymentCancel from "./pages/PaymentCancel";
 import CreateTestimonial from "./pages/CreateTestimonial";
 import CreateEvent from "./pages/CreateEvent";
 import CreateStory from "./pages/CreateStory";
+import ViewUser from "./pages/ViewUser";
+import ViewRoles from "./pages/ViewRoles";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -119,7 +121,7 @@ function App() {
               </>
             }
           />
-          <Route path="/success" element={<><Navbar1 user={user}/><PaymentSuccess user={user} /></>} />
+          <Route path="/success" element={<><Navbar1 user={user} /><PaymentSuccess user={user} /></>} />
           <Route
             path="/eventsgallery"
             element={
@@ -136,8 +138,8 @@ function App() {
             path="/createtestimonial"
             element={
               <>
-                {!user?.is_alumni && <Login />}
-                {user?.is_alumni && (
+                {!(user?.is_alumni || user?.is_admin) && <Login />}
+                {(user?.is_alumni || user?.is_admin) && (
                   <>
                     <CreateTestimonial user={user} />
                   </>
@@ -149,8 +151,8 @@ function App() {
             path="/createevent"
             element={
               <>
-                {!user?.is_member && <Login />}
-                {user?.is_member && (
+                {!(user?.is_member || user?.is_admin) && <Login />}
+                {(user?.is_member || user?.is_admin) && (
                   <>
                     <CreateEvent user={user} />
                   </>
@@ -162,10 +164,36 @@ function App() {
             path="/createstory"
             element={
               <>
-                {!user?.is_member && <Login />}
-                {user?.is_member && (
+                {!(user?.is_member || user?.is_admin) && <Login />}
+                {(user?.is_member || user?.is_admin) && (
                   <>
                     <CreateStory user={user} />
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/viewuser"
+            element={
+              <>
+                {!user?.is_admin && <Login />}
+                {user?.is_member && (
+                  <>
+                    <ViewUser user={user} />
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/viewroles"
+            element={
+              <>
+                {!user?.is_admin && <Login />}
+                {user?.is_member && (
+                  <>
+                    <ViewRoles user={user} />
                   </>
                 )}
               </>

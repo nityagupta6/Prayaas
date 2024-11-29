@@ -11,11 +11,11 @@ const team = [
     linkedin: "https://www.linkedin.com/in/shivam-katiyar-582211228/",
   },
   {
-    name: "Kajal Kaushal",
+    name: "Nitya Gupta",
     img_url:
       "https://media.licdn.com/dms/image/C4D03AQHigGu2EdNiHw/profile-displayphoto-shrink_800_800/0/1634015048651?e=1687996800&v=beta&t=RDk23Tn_BX1dgqQW8ZKSIEjnspCLA6ElB0VwJNlIZKc",
-    email: "iit2020127@iiita.ac.in",
-    linkedin: "https://www.linkedin.com/in/kajal-kaushal-a-devotee/",
+    email: "iec2021071@iiita.ac.in",
+    linkedin: "https://www.linkedin.com/in/nityagupta6/",
   },
   {
     name: "Suket Bhola",
@@ -62,18 +62,18 @@ const team = [
 ];
 
 export default function Team() {
-  return(
+  return (
     <div className="mt-16 mb-16 lg:mt-24 lg:mb-24 w-[80%] m-auto">
-        <h1 className="mt-32 text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C3734]">
-          Our Team
-        </h1>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-10 justify-center items-center mt-7">
-            {team.map((item, _index) => (
-              <div key={_index}>
-                <TeamCard member={item}/>
-              </div>
-            ))}
-        </div>
+      <h1 className="mt-32 text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C3734]">
+        Our Team
+      </h1>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-10 justify-center items-center mt-7">
+        {team.map((item, _index) => (
+          <div key={_index}>
+            <TeamCard member={item} />
+          </div>
+        ))}
       </div>
-    );
+    </div>
+  );
 }

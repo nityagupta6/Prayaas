@@ -21,13 +21,13 @@ export default function Signup() {
     let data;
     if (password === confPassword) {
       try {
-        data = await api.signup({email, password, name, type});
+        data = await api.signup({ email, password, name, type });
         setCookie("AuthToken", data.data.token);
         setCookie("UserId", data.data.userId);
         navigate("/");
         window.location.reload();
       } catch (e) {
-        notify(e.response.data);    
+        notify(e.response.data);
       }
     } else {
       notify("Passwords don't match.");
@@ -128,7 +128,7 @@ export default function Signup() {
                 type="radio"
                 name="type"
                 value="alumni"
-                onChange={(e)=>setType(e.target.value)}
+                onChange={(e) => setType(e.target.value)}
                 checked={type === "alumni"}
               />
               <label
@@ -143,7 +143,7 @@ export default function Signup() {
                 type="radio"
                 name="gender_identity"
                 value="member"
-                onChange={(e)=>setType(e.target.value)}
+                onChange={(e) => setType(e.target.value)}
                 checked={type === "member"}
               />
               <label
@@ -154,11 +154,26 @@ export default function Signup() {
               </label>
               <input
                 className="hidden p-2 md:p-3 mt-2.5 mb-2.5 mr-2 text-base border-[#2f2e41] border-2 rounded-lg"
+                id="admin-identity"
+                type="radio"
+                name="admin_identity"
+                value="admin"
+                onChange={(e) => setType(e.target.value)}
+                checked={type === "admin"}
+              />
+              <label
+                htmlFor="admin-identity"
+                className="mt-2.5 mb-2.5 p-2.5 border-gray-400 border-2 rounded-lg mr-2.5 transition-all duration-300 cursor-pointer"
+              >
+                Admin
+              </label>
+              <input
+                className="hidden p-2 md:p-3 mt-2.5 mb-2.5 mr-2 text-base border-[#2f2e41] border-2 rounded-lg"
                 id="none-identity"
                 type="radio"
                 name="none_identity"
                 value="none"
-                onChange={(e)=>setType(e.target.value)}
+                onChange={(e) => setType(e.target.value)}
                 checked={type === "none"}
               />
               <label
@@ -169,9 +184,7 @@ export default function Signup() {
               </label>
             </div>
             <div className="w-[100%] flex justify-center items-center">
-              <button className="text-white bg-[#306F5E] px-4 py-2 md:px-6 md:py-3 m-2 rounded-full font-semibold w-fit text-lg md:text-xl cursor-pointer hover:opacity-75">
-                Signup
-              </button>
+              <button className="mt-6 py-3 px-10 text-center text-base leading-snug hover:opacity-75 cursor-pointer bg-[#306F5E] text-white">Signup</button>
             </div>
           </form>
         </div>

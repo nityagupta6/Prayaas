@@ -16,7 +16,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await api.login({email, password});
+      const data = await api.login({ email, password });
       // console.log(data);
       setCookie("AuthToken", data.data.token);
       setCookie("UserId", data.data.userId);
@@ -28,7 +28,7 @@ export default function Login() {
     }
   };
 
-  const handleClick=()=>{
+  const handleClick = () => {
     navigate('/signup')
   }
 
@@ -94,15 +94,15 @@ export default function Login() {
               />
             </label>
             <div className="w-[100%] flex justify-center items-center">
-              <button className="text-white bg-[#306F5E] px-4 py-2 md:px-6 md:py-3 m-2 rounded-full font-semibold w-fit text-lg md:text-xl cursor-pointer hover:opacity-75">
+              <button className="py-3 px-10 text-center text-base leading-snug hover:opacity-75 cursor-pointer bg-[#306F5E] text-white">
                 Login
               </button>
             </div>
             <div className="mt-8 text-center text-lg">Don't have an account?&nbsp;&nbsp;
-                <button 
-                    className="cursor-pointer text-[#306F5E] underline underline-offset-2"
-                    onClick={handleClick}
-                >Signup</button>
+              <button
+                className="cursor-pointer text-[#306F5E] underline underline-offset-2"
+                onClick={handleClick}
+              >Signup</button>
             </div>
           </form>
         </div>

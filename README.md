@@ -78,17 +78,26 @@ Follow these steps to set up and run the Prayaas website on your local machine:
    cd Prayaas
    ```
 
-7. Install the dependencies in the root directory of the project:
+7. Create a `.env` file inside the `server` folder and then declare the following variables inside it:
+   </br>
+   - MONGO_URL="Your mongodb connection string"
+   - STRIPE_PUBLISHABLE_KEY="your STRIPE PUBLISHABLE KEY"
+   - STRIPE_SECRET_KEY="your STRIPE SECRET KEY"
+
+</br>
+
+8. Install the dependencies in the root directory of the project:
    </br>
 
    ```bash
    npm run install
    ```
 
-8. Start both the server and client for development:
+9. Start both the server and client for development:
    </br>
    ```bash
    npm run watch
    ```
+   This command gets the server running on localhost port 8000 and the client runs on localhost port 3000.
 
-The app will be live on **localhost:3000**.
+The app can be explored on `localhost:3000`.
