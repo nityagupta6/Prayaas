@@ -178,7 +178,7 @@ function App() {
             element={
               <>
                 {!user?.is_admin && <Login />}
-                {user?.is_member && (
+                {user?.is_admin && (
                   <>
                     <ViewUser user={user} />
                   </>
@@ -191,7 +191,7 @@ function App() {
             element={
               <>
                 {!user?.is_admin && <Login />}
-                {user?.is_member && (
+                {user?.is_admin && (
                   <>
                     <ViewRoles user={user} />
                   </>

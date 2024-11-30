@@ -4,11 +4,11 @@ import React from "react";
 // import Carousel from 'better-react-carousel';
 import EventCard from "./EventCard";
 import StoryCard from "./StoryCard";
-
+import RoleCard from "./RoleCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-export default function MultiSlider({ items, event, story }) {
+export default function MultiSlider({ items, event, story, role }) {
   const responsive1 = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1280 },
@@ -54,10 +54,11 @@ export default function MultiSlider({ items, event, story }) {
     //   ))}
     // </Carousel>
 
-    <Carousel responsive={event ? responsive1 : responsive2}>
+    <Carousel responsive={(event || role) ? responsive1 : responsive2}>
       {items.map((item, _index) => (
         <div key={_index}>
           {event && <EventCard event={item} />}
+          {role && <RoleCard role={item} />}
           {story && <StoryCard story={item} ind={_index} />}
         </div>
       ))}

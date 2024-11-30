@@ -99,7 +99,7 @@ export default function Home({ user }) {
             {user?.is_admin && (
               <div>
                 <button
-                  className="py-3 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#F7D770] text-black"
+                  className="py-3 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#F7D770] text-[#2C3734]"
                   onClick={handleClickRole}
                 >
                   View Roles
