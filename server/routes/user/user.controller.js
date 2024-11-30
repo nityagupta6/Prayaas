@@ -1,4 +1,5 @@
 const User = require("../../models/user");
+
 async function getSingleUser(req, res) {
   try {
     const user = await User.findOne({ user_id: req.query.user_id });
@@ -15,6 +16,15 @@ async function getSingleUser(req, res) {
   }
 }
 
+async function getAllUsers(req, res) {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+
 module.exports = {
-  getSingleUser,
+  getSingleUser, getAllUsers,
 };

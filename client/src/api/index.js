@@ -23,4 +23,5 @@ export const api = {
   deleteTestimonial: (data) => API.delete("/testimonials/testimonial", data),
 
   getSingleUser: (user_id) => API.get(`/users/user?user_id=${user_id}`),
+  getAllUsers: () => API.get("users/viewusers"),
 };

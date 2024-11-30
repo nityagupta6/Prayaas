@@ -13,4 +13,5 @@ apiRouter.use("/stories", storyRouter);
 apiRouter.use("/events", eventRouter);
 apiRouter.use("/testimonials", testimonialRouter);
 apiRouter.use("/users", userRouter);
+apiRouter.use("/viewusers/", userRouter);
 module.exports = apiRouter;
